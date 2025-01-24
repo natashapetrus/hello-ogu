@@ -66,7 +66,7 @@ router.post('/', async (request, env) => {
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
           data: {
             // Fetches a random emoji to send from a helper function
-            content: 'hello world ' + emojiList[Math.floor(Math.random() * emojiList.length)],
+            content: emojiList[Math.floor(Math.random() * emojiList.length)],
           },
         });
       }
