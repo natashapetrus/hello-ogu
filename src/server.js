@@ -25,6 +25,8 @@ class JsonResponse extends Response {
 
 const router = AutoRouter();
 
+const emojiList = ['🥰','✨','❤️','🐶','🐇','🦔','🤡','👻','🧚','💃','👋','🧜‍♀️','🌸','🍔','🍑','🌝','🌚','🌼','💎','🍃','💅','👀','👾'];
+
 /**
  * A simple :wave: hello page to verify the worker is working.
  */
@@ -63,7 +65,7 @@ router.post('/', async (request, env) => {
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
           data: {
             // Fetches a random emoji to send from a helper function
-            content: 'hello world ' + getRandomEmoji(),
+            content: 'hello world ' + emojiList[Math.floor(Math.random() * emojiList.length)],
           },
         });
       }
