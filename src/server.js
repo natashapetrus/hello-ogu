@@ -10,33 +10,6 @@ import {
 } from 'discord-interactions';
 import { HELLO_COMMAND, INVITE_COMMAND } from './commands.js';
 import { InteractionResponseFlags } from 'discord-interactions';
-import nacl from 'tweetnacl';
-const Buffer = require('buffer/').Buffer;
-
-async function handleRequest(request, env) {
-  if (request.method === 'POST') {
-    const req = await request.json();
-
-    const headers = request.headers;
-    const PUBLIC_KEY = env.DISCORD_PUBLIC_KEY;
-    const signature = headers.get('X-Signature-Ed25519');
-    const timestamp = headers.get('X-Signature-Timestamp');
-
-    if (signature && timestamp) {
-      const isVerified = nacl.sign.detached.verify(
-        Buffer(timestamp + JSON.stringify(req)),
-        Buffer(signature, 'hex'),
-        Buffer(PUBLIC_KEY, 'hex'),
-      );
-
-      if (!isVerified) {
-        return new Response(JSON.stringify(req), { status: 401 });
-      } else {
-        return new Response(JSON.stringify(req), { status: 200 });
-      }
-    }
-  }
-}
 
 class JsonResponse extends Response {
   constructor(body, init) {
@@ -113,7 +86,8 @@ router.post('/', async (request, env) => {
   console.error('Unknown Type');
   return new JsonResponse({ error: 'Unknown Type' }, { status: 400 });
 });
-router.all('*', () => new Response('Not Found.', { status: 404 }));
+//router.all('*', () => new Response('Not Found.', { status: 404 }));
+router.all('*', () => new Response('OK.', { status: 200 }));
 
 async function verifyDiscordRequest(request, env) {
   const signature = request.headers.get('x-signature-ed25519');
