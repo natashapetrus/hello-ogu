@@ -3,9 +3,9 @@
  * and registration.
  */
 
-export const HELLO_COMMAND = {
-  name: 'hello',
-  description: 'Baby Ogu says hello with a surprise emoji!',
+export const EMOTE_COMMAND = {
+  name: 'emote',
+  description: 'Baby Ogu surprises you with a random custom emote of his choice!',
 };
 
 export const INVITE_COMMAND = {

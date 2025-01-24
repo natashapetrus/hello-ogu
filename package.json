@@ -1,7 +1,7 @@
 {
   "name": "helloogubot",
   "version": "1.0.0",
-  "description": "Baby Ogu says hello with a surprise emoji!",
+  "description": "Baby Ogu surprises you with a random custom emote of his choice!",
   "type": "module",
   "private": true,
   "main": "src/server.js",
